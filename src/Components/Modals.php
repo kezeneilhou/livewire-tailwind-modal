@@ -14,6 +14,7 @@ class Modals extends Component
     public $message;
     public $activemodal;
     public $size;
+    public $title;
     public function render()
     {
         return view('livewire-tailwind-modal::modals');
