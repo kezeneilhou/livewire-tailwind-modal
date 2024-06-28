@@ -10,7 +10,7 @@
             <div
                 class="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-{{ $size }}xl">
                 <div class="border border-gray-100 shadow px-4 py-4">
-                    <div class="inline font-bold">Modal</div><button class="float-end"
+                    <div class="inline font-bold">{{ $title }}</div><button class="float-end"
                         id="livewire-tailwind-modal-close-btn"><svg xmlns="http://www.w3.org/2000/svg" width="16"
                             height="16" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
                             <path

@@ -16,6 +16,11 @@ document.addEventListener('click', function(event) {
     }
 });
 
+var closeId = document.querySelector('[data-tw="close"]');
+        closeId.addEventListener('click', function() {
+            closeModal();
+        });
+
 Livewire.on('showModal', (e) => {
    modalsElement.classList.remove('hidden')
 
