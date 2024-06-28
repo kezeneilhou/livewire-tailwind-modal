@@ -1,6 +1,6 @@
 # Laravel Livewire Modals
 
-This package allows you to dynamically show your Laravel Livewire 3 components inside Bootstrap modals.
+This package allows you to dynamically show your Laravel Livewire 3 components inside tailwind modals.
 
  **Warning:** This package is not backward compatible with Livewire 2.
 
@@ -17,17 +17,13 @@ This package allows you to dynamically show your Laravel Livewire 3 components i
 - [Publishing Assets](#publishing-assets)
     - [Custom View](#custom-view)
 
-## Requirements
-
-- Bootstrap 5 must be installed via webpack first
-
 ## Installation
 
 
 Require the package:
 
 ```console
-composer require mozhuilungdsuo/livewire-bootstrap-modal
+composer require kezeneilhou/livewire-tailwind-modal
 ```
 
 Add the `livewire:modals` component to your app layout view:
@@ -46,27 +42,7 @@ import '../../vendor/kezeneilhou/livewire-tailwind-modal/resources/js/modals.js'
 
 ## Usage
 
-### Modal Views
-
-Make a Livewire component you want to show as a modal. The view for this component must use the Bootstrap `modal-dialog` container:
-
-```html
-<div>
-
-        <div class="modal-header">
-            <h5 class="modal-title">Modal title</h5>
-            <button type="button" class="btn-close" wire:click="$dispatch('hideModal')" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-            <p>Modal body text goes here.</p>
-        </div>
-        <div class="modal-footer">
-            <button type="button" class="btn btn-secondary"  wire:click="$dispatch('hideModal')">Close</button>
-            <button type="button" class="btn btn-primary">Save changes</button>
-        </div>
-</div>
  
-```
 ### To call from a normal blade view
 
 ```html
@@ -97,7 +73,6 @@ Pass parameters to the component `mount` method after the alias:
 Click me
     </button>
 </div>
-- Note 'backdrop':'static',message:'Are you sure?' are optional 
 
 ```
 
@@ -166,7 +141,7 @@ public function save()
 Use your own modals view by publishing the package view:
 
 ```console
-php artisan vendor:publish --tag=livewire-bootstrap-modal:views
+php artisan vendor:publish --tag=livewire-tailwind-modal:views
 ```
 
-Now edit the view file inside `resources/views/vendor/livewire-bootstrap-modal`. The package will use this view to render the component.
+Now edit the view file inside `resources/views/vendor/livewire-tailwind-modal`. The package will use this view to render the component.
