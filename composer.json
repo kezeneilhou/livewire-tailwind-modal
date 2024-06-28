@@ -38,7 +38,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Kezeneilhou\\LaravelLivewireTailwindModals\\Providers\\LaravelLivewireModalsProvider"
+                "Kezeneilhou\\LaravelLivewireTailwindModals\\Providers\\LaravelLivewireTailwindModalsProvider"
             ]
         }
     }
