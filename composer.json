@@ -32,7 +32,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Kezeneilhou\\LaravelLivewireModals\\": "src"
+            "Kezeneilhou\\LaravelLivewireTailwindModals\\": "src"
         }
     },
     "extra": {
