@@ -8,6 +8,14 @@ modalsElement.addEventListener('keydown', (e) => {
     }
 });
 
+document.addEventListener('click', function(event) {
+    if (!modalsElement.classList.contains('hidden')) {
+        if (event.target.id === 'livewire-tailwind-modal-content') {
+            Livewire.emit('hideModal');
+        }
+    }
+});
+
 Livewire.on('showModal', (e) => {
    modalsElement.classList.remove('hidden')
 
@@ -17,3 +25,4 @@ Livewire.on('hideModal', () => {
     modalsElement.classList.add('hidden')
     Livewire.dispatch('resetModal');
 });
+
