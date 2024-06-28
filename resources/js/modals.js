@@ -4,21 +4,21 @@ let modalsElement = document.getElementById('livewire-tailwind-modal');
 
 modalsElement.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') {
-        Livewire.emit('hideModal');
+        Livewire.dispatch('hideModal');
     }
 });
 
 document.addEventListener('click', function(event) {
     if (!modalsElement.classList.contains('hidden')) {
         if (event.target.id === 'livewire-tailwind-modal-content') {
-            Livewire.emit('hideModal');
+            Livewire.dispatch('hideModal');
         }
     }
 });
 
 var closeId = document.querySelector('[data-tw="close"]');
         closeId.addEventListener('click', function() {
-            closeModal();
+            Livewire.dispatch('hideModal');
         });
 
 Livewire.on('showModal', (e) => {
@@ -31,3 +31,6 @@ Livewire.on('hideModal', () => {
     Livewire.dispatch('resetModal');
 });
 
+document.getElementById('livewire-tailwind-modal-close-btn').addEventListener('click', function() {
+    Livewire.dispatch('hideModal');
+});
