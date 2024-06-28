@@ -19,7 +19,7 @@
                 </div>
                 <div class="bg-white px-4 pb-4 pt-5 sm:p-6 sm:pb-4">
                     @if ($alias)
-                        @livewire($alias, $params, $backdrop, $message, key($activemodal))
+                        @livewire($alias, $params, key($activemodal))
                     @endif
                 </div>
 
