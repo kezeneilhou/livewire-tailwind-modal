@@ -13,6 +13,7 @@ class Modals extends Component
     public $backdrop;
     public $message;
     public $activemodal;
+    public $size;
     public function render()
     {
         return view('livewire-tailwind-modal::modals');
@@ -23,6 +24,8 @@ class Modals extends Component
         
         $this->alias = $data['alias'];
         $this->params = $data['params'] ?? [];
+        $this->size = $data['size'] ?? '2';
+        $this->title = $data['title'] ??'Modal';
         $this->activemodal = rand();
         $this->dispatch('showTailwindModal');
     }
