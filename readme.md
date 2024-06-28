@@ -38,12 +38,10 @@ Add the `livewire:modals` component to your app layout view:
 <script src="{{ asset('js/app.js') }}"></script>
 ```
 
-Require `../../vendor/mozhuilungdsuo/livewire-bootstrap-modal/resources/js/modals` in your app javascript file:
+Require `../../vendor/kezeneilhou/livewire-tailwind-modal/resources/js/modals` in your app javascript file:
 
 ```javascript
-import('@popperjs/core');
-import '../../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js';
-import '../../vendor/mozhuilungdsuo/livewire-bootstrap-modal/resources/js/modals.js';
+import '../../vendor/kezeneilhou/livewire-tailwind-modal/resources/js/modals.js';
 ```
 
 ## Usage

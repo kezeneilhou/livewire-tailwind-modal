@@ -1,7 +1,7 @@
 {
-    "name": "mozhuilungdsuo/livewire-bootstrap-modal",
-    "homepage": "https://github.com/mozhuilungdsuo/livewire-bootstrap-modal",
-    "description": "Dynamic Laravel Livewire 3 Bootstrap modals.",
+    "name": "kezeneilhou/livewire-tailwind-modal",
+    "homepage": "https://github.com/kezeneilhou/livewire-tailwind-modal",
+    "description": "Dynamic Laravel Livewire 3 Tailwind modals.",
     "license": "MIT",
     "authors": [
         {
@@ -18,6 +18,11 @@
             "name": "Lungdsuo Mozhui",
             "email": "mozhui.lungdsuo@gmail.com",
             "role": "Developer"
+        },
+        {
+            "name": "Kezeneilhou Mhasi",
+            "email": "mkezeneilhou@gmail.com",
+            "role": "Developer"
         }
        
     ],
@@ -27,13 +32,13 @@
     },
     "autoload": {
         "psr-4": {
-            "MozhuiLungdsuo\\LaravelLivewireModals\\": "src"
+            "Kezeneilhou\\LaravelLivewireModals\\": "src"
         }
     },
     "extra": {
         "laravel": {
             "providers": [
-                "MozhuiLungdsuo\\LaravelLivewireModals\\Providers\\LaravelLivewireModalsProvider"
+                "Kezeneilhou\\LaravelLivewireTailwindModals\\Providers\\LaravelLivewireModalsProvider"
             ]
         }
     }

@@ -1,6 +1,6 @@
 <?php
 
-namespace MozhuiLungdsuo\LaravelLivewireModals\Components;
+namespace Kezeneilhou\LaravelLivewireTailwindModals\Components;
 
 use Illuminate\Support\Facades\Log;
 use Livewire\Component;
@@ -15,7 +15,7 @@ class Modals extends Component
     public $activemodal;
     public function render()
     {
-        return view('livewire-bootstrap-modal::modals');
+        return view('livewire-tailwind-modal::modals');
     }
     #[On('showModal')]
     public function showModal($data)
@@ -23,10 +23,8 @@ class Modals extends Component
         
         $this->alias = $data['alias'];
         $this->params = $data['params'] ?? [];
-        $this->backdrop = $data['backdrop'] ?? '';
-        $this->message = $data['message'] ?? '';
         $this->activemodal = rand();
-        $this->dispatch('showBootstrapModal',backdrop:$this->backdrop,message:$this->message);
+        $this->dispatch('showTailwindModal');
     }
     #[On('resetModal')]
     public function resetModal()
