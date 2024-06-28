@@ -1,5 +1,5 @@
-<div class="relative z-10 hidden" aria-labelledby="modal-title" role="dialog" aria-modal="true"
-    id="livewire-tailwind-modal">
+<div class="relative z-10 hidden" aria-labelledby="modal-title" role="dialog" aria-modal="true" id="livewire-tailwind-modal"
+    wire:ignore.self>
 
     <div class="fixed inset-0 bg-gray-900 bg-opacity-75 transition-opacity backdrop-blur-sm" aria-hidden="true"
         id="modal-bg"></div>
