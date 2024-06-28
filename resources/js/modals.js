@@ -17,9 +17,11 @@ document.addEventListener('click', function(event) {
 });
 
 var closeId = document.querySelector('[data-tw="close"]');
+if(closeId !== null){
         closeId.addEventListener('click', function() {
             Livewire.dispatch('hideModal');
         });
+    };
 
 Livewire.on('showModal', (e) => {
    modalsElement.classList.remove('hidden')
