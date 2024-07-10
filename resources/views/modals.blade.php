@@ -1,28 +1,27 @@
-<div class="relative z-10 hidden" aria-labelledby="modal-title" role="dialog" aria-modal="true" id="livewire-tailwind-modal"
+<div id="kezeneilhou-tailwind-modal" data-modal-backdrop="static" tabindex="-1" aria-hidden="true"
+    class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full"
     wire:ignore.self>
-
-    <div class="fixed inset-0 bg-gray-900 bg-opacity-75 transition-opacity backdrop-blur-sm" aria-hidden="true"
-        id="modal-bg"></div>
-
-    <div class="fixed inset-0 z-10 w-screen overflow-y-auto">s
-        <div class="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0"
-            id="livewire-tailwind-modal-content">
-            <div
-                class="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-{{ $size }}xl">
-                <div class="border border-gray-100 shadow px-4 py-4">
-                    <div class="inline font-bold">{{ $title }}</div><button class="float-end"
-                        id="livewire-tailwind-modal-close-btn"><svg xmlns="http://www.w3.org/2000/svg" width="16"
-                            height="16" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
-                            <path
-                                d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8z" />
-                        </svg></button>
-                </div>
-                <div class="bg-white px-4 pb-4 pt-5 sm:p-6 sm:pb-4">
-                    @if ($alias)
-                        @livewire($alias, $params, key($activemodal))
-                    @endif
-                </div>
-
+    <div class="relative p-4 w-full max-w-2xl max-h-full">
+        <div class="relative bg-white rounded-lg shadowbg-gray-100">
+            <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t border-gray-200">
+                <h3 class="text-xl font-semibold text-gray-700">
+                    {{ $title }}
+                </h3>
+                <button type="button"
+                    class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
+                    data-modal-hide="kezeneilhou-tailwind-modal">
+                    <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                        viewBox="0 0 14 14">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
+                    </svg>
+                    <span class="sr-only">Close modal</span>
+                </button>
+            </div>
+            <div class="p-4 pt-2 md:p-5 md:pt-2">
+                @if ($alias)
+                    @livewire($alias, $params, key($activemodal))
+                @endif
             </div>
         </div>
     </div>
