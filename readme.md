@@ -25,7 +25,30 @@ Require the package:
 ```console
 composer require kezeneilhou/livewire-tailwind-modal
 ```
+Install Flowbit:
+```console
+npm install flowbite
+```
 
+Add the view paths and require Flowbite as a plugin inside tailwind.config.js
+```console
+module.exports = {
+    content: [
+      "./node_modules/flowbite/**/*.js"
+    ],
+    theme: {
+      extend: {},
+    },
+    plugins: [
+        require('flowbite/plugin')
+    ],
+}
+```
+
+Import the Flowbite JavaScript package inside the ./resources/js/app.js file to enable the interactive modals.
+```console
+import 'flowbite';
+```
 Add the `livewire:modals` component to your app layout view:
 
 ```html
