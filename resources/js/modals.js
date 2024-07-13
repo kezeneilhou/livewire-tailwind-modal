@@ -7,4 +7,5 @@ Livewire.on('showTailwindModal', (e) => {
 
 Livewire.on('hideTailwindModal', (e) => {
     modal.hide();
+    Livewire.dispatch('resetModal');
 });
