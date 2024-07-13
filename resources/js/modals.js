@@ -4,3 +4,7 @@ const modal = new Modal(modalsElement);
 Livewire.on('showTailwindModal', (e) => {
     modal.show();
 });
+
+Livewire.on('hideTailwindModal', (e) => {
+    modal.hide();
+});
