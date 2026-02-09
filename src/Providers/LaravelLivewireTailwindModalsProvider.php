@@ -17,6 +17,7 @@ class LaravelLivewireTailwindModalsProvider extends ServiceProvider
             ['livewire-tailwind-modal', 'livewire-tailwind-modal:views']
         );
 
+        // Register the component
         Livewire::component('modals', Modals::class);
     }
 }

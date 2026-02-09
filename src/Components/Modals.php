@@ -20,6 +20,11 @@ class Modals extends Component
     {
         return view('livewire-tailwind-modal::modals');
     }
+    #[On('hideModal')]
+    public function hideModal()
+    {
+        $this->dispatch('close-global-modal');
+    }
     #[On('showModal')]
     public function showModal($data)
     {
