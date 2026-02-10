@@ -14,7 +14,7 @@ A dynamic, global modal component for **Laravel 12** and **Livewire 4**, built t
 You can install the package via composer:
 
 ```bash
-composer require kezeneilhou/ivewire-tailwind-modal
+composer require kezeneilhou/livewire-tailwind-modal
 
 ```
 
