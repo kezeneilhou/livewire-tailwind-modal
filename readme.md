@@ -1,119 +1,178 @@
+````md
 # Laravel Livewire Tailwind Modals
 
-A dynamic, global modal component for **Laravel 12** and **Livewire 4**, built to work seamlessly with **Livewire Flux**. This package allows you to load any Livewire component inside a modal without polluting your DOM with multiple modal instances.
+A dynamic global modal component for **Laravel 12** and **Livewire 4**, built to work seamlessly with **Livewire Flux**.
 
-## Requirements
+This package allows you to load any Livewire component inside a single reusable modal, without polluting your DOM with multiple modal instances.
 
-- **PHP:** 8.2+
-- **Laravel:** 12+
-- **Livewire:** 4+
-- **Livewire Flux:** (Must be installed and configured)
+---
 
-## Installation
+## 📋 Requirements
 
-You can install the package via composer:
+- PHP 8.2+
+- Laravel 12+
+- Livewire 4+
+- Livewire Flux (must be installed and configured)
+
+---
+
+## 📦 Installation
+
+Install the package via Composer:
 
 ```bash
 composer require kezeneilhou/livewire-tailwind-modal
+````
 
-```
+---
 
-## Setup
+## ⚙️ Setup
 
-### 1. Configure the Layout
-add to app.js 
+### 1. Publish Assets
 
-import './vendor/livewire-tailwind-modal/modals.js';
+Publish the JavaScript and view files:
 
-
-Add the `<livewire:modals/>` component to your main layout file (e.g., `layouts/app.blade.php`). This should be placed near the bottom of the `<body>` tag.
-
-Ensure you have `@fluxScripts` included as well, which is required for the modal interactions.
-
-```blade
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        @fluxStyles
-    </head>
-    <body class="min-h-screen bg-white dark:bg-zinc-800">
-
-        {{ $slot }}
-
-        <livewire:modals />
-
-        @fluxScripts
-        @livewireScripts
-    </body>
-</html>
-
+```bash
+php artisan vendor:publish --tag=livewire-tailwind-modal:assets
+php artisan vendor:publish --tag=livewire-tailwind-modal:views
 ```
 
 ---
 
-## Usage
+### 2. Register JavaScript (Vite)
 
-### To call from a normal blade view
+Import the modal script into your main `app.js` file:
 
-You can trigger the modal from standard JavaScript or Alpine context using `Livewire.dispatch`.
+```js
+// resources/js/app.js
+import './vendor/livewire-tailwind-modal/modals.js';
+```
+
+Then rebuild assets:
+
+```bash
+npm run dev
+```
+
+---
+
+### 3. Configure Layout
+
+Add the `<livewire:modals />` component to your main layout (for example: `layouts/app.blade.php`).
+
+Place it near the end of the `<body>` tag.
+
+Make sure `@fluxScripts` and `@livewireScripts` are included.
+
+```blade
+<!DOCTYPE html>
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<head>
+    @fluxStyles
+</head>
+
+<body class="min-h-screen bg-white dark:bg-zinc-800">
+
+    {{ $slot }}
+
+    <!-- Global Modal -->
+    <livewire:modals />
+
+    @fluxScripts
+    @livewireScripts
+</body>
+</html>
+```
+
+---
+
+## 🚀 Usage
+
+### Opening a Modal (Blade / JavaScript)
+
+You can trigger a modal from a normal Blade view or JavaScript using `Livewire.dispatch`.
 
 ```html
 <button
-  type="button"
-  onclick="Livewire.dispatch('showModal', {data: {'alias' : 'modals.example'}})"
+    type="button"
+    onclick="Livewire.dispatch('showModal', { 
+        data: { alias: 'modals.example' } 
+    })"
 >
-  Click me to open modal
+    Open Modal
 </button>
 ```
 
-### Showing Modals
+---
 
-Show a modal by emitting the `showModal` event with the component alias. This can be done directly from a Livewire component view:
-
-```html
-<div>
-  <button
-    type="button"
-    wire:click="$dispatch('showModal', {data: {'alias' : 'modals.example'}})"
-  >
-    Click me
-  </button>
-</div>
-```
-
-### Mount Parameters
-
-Pass parameters to the component `mount` method after the alias. You can also define the modal `size` and `title` here.
-
-**Supported Sizes:** `'1'` (sm), `'2'` (md/default), `'3'` (lg), `'4'` (xl), `'5'` (2xl), `'6'` (3xl).
+### Opening from a Livewire View
 
 ```html
 <div>
-  <button
-    type="button"
-    wire:click="$dispatch('showModal', {data: {'alias' : 'modals.example', 'params' : {'name': 'test'}, 'size': '4', 'title': 'Test Modal'}})"
-  >
-    Click me to open modal
-  </button>
+    <button
+        type="button"
+        wire:click="$dispatch('showModal', { 
+            data: { alias: 'modals.example' } 
+        })"
+    >
+        Open Modal
+    </button>
 </div>
 ```
 
-The component `mount` method for the example above would look like this:
+---
+
+## 📌 Passing Parameters
+
+You may pass parameters, size, and title when opening a modal.
+
+### Supported Sizes
+
+| Value | Size             |
+| ----- | ---------------- |
+| 1     | Small            |
+| 2     | Medium (default) |
+| 3     | Large            |
+| 4     | Extra Large      |
+| 5     | 2XL              |
+| 6     | 3XL              |
+
+---
+
+### Example with Parameters
+
+```html
+<div>
+    <button
+        type="button"
+        wire:click="$dispatch('showModal', {
+            data: {
+                alias: 'modals.example',
+                params: { name: 'test' },
+                size: '4',
+                title: 'Test Modal'
+            }
+        })"
+    >
+        Open Modal
+    </button>
+</div>
+```
+
+---
+
+### Receiving Parameters in Component
 
 ```php
 namespace App\Http\Livewire\Users;
 
-use App\Models\User;
 use Livewire\Component;
 
 class Update extends Component
 {
-    public $user;
-
-    // The 'params' passed in the dispatch are injected here
     public function mount($name)
     {
-        // $name will be 'test'
+        // $name = "test"
     }
 
     public function render()
@@ -121,52 +180,77 @@ class Update extends Component
         return view('users.update');
     }
 }
-
 ```
 
-### Hiding Modals
+---
 
-Hide the currently open modal by emitting the `hideModal` event:
+## ❌ Closing Modals
+
+### From Blade
 
 ```html
 <button type="button" wire:click="$dispatch('hideModal')">
-  {{ __('Close') }}
+    Close
 </button>
 ```
 
-### Emitting Events
+---
 
-You can emit events inside your views:
-
-```html
-<button type="button" wire:click="$dispatch('hideModal')">
-  {{ __('Close') }}
-</button>
-```
-
-Or inside your components, just like any normal Livewire event:
+### From Livewire Component
 
 ```php
 public function save()
 {
     $this->validate();
 
-    // save the record
+    // Save logic...
 
     $this->dispatch('hideModal');
 }
-
 ```
 
-## Publishing Assets
+---
 
-### Custom View
+## 📤 Publishing Views (Customization)
 
-Use your own modals view by publishing the package view. This is useful if you want to customize the Flux modal wrapper or change transition effects.
+If you want to customize the modal layout or animations, publish the package view:
 
-```console
+```bash
 php artisan vendor:publish --tag=livewire-tailwind-modal:views
-
 ```
 
-Now edit the view file inside `resources/views/vendor/livewire-tailwind-modal`. The package will use this view to render the component.
+The view will be copied to:
+
+```
+resources/views/vendor/livewire-tailwind-modal
+```
+
+You may edit it freely. The package will automatically use your customized view.
+
+---
+
+## 🛠 Troubleshooting
+
+### JavaScript Not Loading
+
+Make sure:
+
+* Assets are published
+* `modals.js` is imported in `app.js`
+* `npm run build` has been executed
+
+### Alpine Errors
+
+Ensure Alpine is loaded before `modals.js`:
+
+```js
+import Alpine from 'alpinejs';
+
+window.Alpine = Alpine;
+Alpine.start();
+
+import './vendor/livewire-tailwind-modal/modals.js';
+```
+
+---
+
