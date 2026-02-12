@@ -1,35 +1,30 @@
 /**
- * Global Modal Component for Alpine CSP Compliance
+ * Kezeneilhou Global Modal Logic
+ * CSP Compliant: No inline scripts, no eval().
  */
 document.addEventListener('alpine:init', () => {
     Alpine.data('kezeneilhouGlobalModal', () => ({
         init() {
-            // Define handlers as constants so we can remove them on cleanup
-            this.openHandler = () => {
-                if (window.Flux) {
-                    Flux.modal('kezeneilhou-global-modal').show();
-                }
+            // Native Event Listeners (CSP Friendly)
+            const openModal = () => {
+                if (window.Flux) Flux.modal('kezeneilhou-global-modal').show();
+            };
+            const closeModal = () => {
+                if (window.Flux) Flux.modal('kezeneilhou-global-modal').close();
             };
 
-            this.closeHandler = () => {
-                if (window.Flux) {
-                    Flux.modal('kezeneilhou-global-modal').close();
-                }
-            };
+            window.addEventListener('open-global-modal', openModal);
+            window.addEventListener('close-global-modal', closeModal);
 
-            // Register window listeners
-            window.addEventListener('open-global-modal', this.openHandler);
-            window.addEventListener('close-global-modal', this.closeHandler);
-
-            // Cleanup to prevent memory leaks in SPAs
+            // Cleanup when component is destroyed
             this.$cleanup(() => {
-                window.removeEventListener('open-global-modal', this.openHandler);
-                window.removeEventListener('close-global-modal', this.closeHandler);
+                window.removeEventListener('open-global-modal', openModal);
+                window.removeEventListener('close-global-modal', closeModal);
             });
         },
 
         handleClose() {
-            // Triggers the Livewire reset when modal is dismissed
+            // Dispatch back to Livewire
             this.$wire.dispatch('resetModal');
         }
     }));
