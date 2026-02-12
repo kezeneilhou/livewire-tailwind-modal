@@ -16,6 +16,9 @@ class LaravelLivewireTailwindModalsProvider extends ServiceProvider
             [__DIR__ . '/../../resources/views' => resource_path('views/vendor/livewire-tailwind-modal')],
             ['livewire-tailwind-modal', 'livewire-tailwind-modal:views']
         );
+        $this->publishes([
+            __DIR__ . '/../resources/js/modal.js' => public_path('vendor/livewire-tailwind-modal/modal.js'),
+        ], 'public');
 
         // Register the component
         Livewire::component('modals', Modals::class);
