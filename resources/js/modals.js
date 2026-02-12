@@ -17,15 +17,12 @@ document.addEventListener('alpine:init', () => {
             window.addEventListener('close-global-modal', closeModal);
 
             // Cleanup when component is destroyed
-            this.$cleanup(() => {
-                window.removeEventListener('open-global-modal', openModal);
-                window.removeEventListener('close-global-modal', closeModal);
-            });
+
         },
 
         handleClose() {
             // Dispatch back to Livewire
-            this.$wire.dispatch('resetModal');
+            Livewire.dispatch('resetModal');
         }
     }));
 });

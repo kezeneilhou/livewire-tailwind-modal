@@ -23,7 +23,8 @@ composer require kezeneilhou/livewire-tailwind-modal
 ### 1. Configure the Layout
 add to app.js 
 
-import '../../vendor/kezeneilhou/livewire-tailwind-modal/resources/js/modals.js';
+import './vendor/livewire-tailwind-modal/modals.js';
+
 
 Add the `<livewire:modals/>` component to your main layout file (e.g., `layouts/app.blade.php`). This should be placed near the bottom of the `<body>` tag.
 
