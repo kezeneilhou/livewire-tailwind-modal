@@ -18,7 +18,6 @@ class Modals extends Component
 
     public function render()
     {
-        Log::info('yello');
         return view('livewire-tailwind-modal::modals');
     }
     #[On('hideModal')]
