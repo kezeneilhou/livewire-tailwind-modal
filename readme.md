@@ -128,14 +128,18 @@ You may pass parameters, size, and title when opening a modal.
 
 ### Supported Sizes
 
-| Value | Size             |
-| ----- | ---------------- |
-| 1     | Small            |
-| 2     | Medium (default) |
-| 3     | Large            |
-| 4     | Extra Large      |
-| 5     | 2XL              |
-| 6     | 3XL              |
+| Value        | Width              |
+| ------------ | ------------------ |
+| 1 or `sm`    | Small              |
+| 2 or `md`    | Medium (default)   |
+| 3 or `lg`    | Large              |
+| 4 or `xl`    | Extra Large        |
+| 5 or `2xl`   | 2XL                |
+| 6 or `3xl`   | 3XL                |
+| `4xl`-`7xl`  | Larger widths      |
+| `full`       | Viewport width cap |
+
+The modal width is responsive and capped to the viewport, so large sizes still fit on small screens.
 
 ---
 
@@ -253,4 +257,3 @@ import './vendor/livewire-tailwind-modal/modals.js';
 ```
 
 ---
-

@@ -2,7 +2,6 @@
 
 namespace Kezeneilhou\LaravelLivewireTailwindModals\Components;
 
-use Illuminate\Support\Facades\Log;
 use Livewire\Component;
 use Livewire\Attributes\On;
 
@@ -31,7 +30,7 @@ class Modals extends Component
 
         $this->alias = $data['alias'];
         $this->params = $data['params'] ?? [];
-        $this->size = $data['size'] ?? '6';
+        $this->size = $data['size'] ?? '2';
         $this->title = $data['title'] ??'Modal';
         $this->activemodal = rand();
         $this->dispatch('open-global-modal');
@@ -42,7 +41,7 @@ class Modals extends Component
         $this->reset();
 
     }
-     public function getFluxWidth()
+    public function getFluxWidth()
     {
         return match((string)$this->size) {
             '1' => 'sm',
@@ -53,5 +52,30 @@ class Modals extends Component
             '6' => '3xl',
             default => $this->size // Allow passing 'xl' directly
         };
+    }
+
+    public function getFluxMaxWidth(): string
+    {
+        return match (strtolower(trim((string) ($this->size ?? '2')))) {
+            '1', 'sm' => '24rem',
+            '2', 'md' => '28rem',
+            '3', 'lg' => '32rem',
+            '4', 'xl' => '36rem',
+            '5', '2xl' => '42rem',
+            '6', '3xl' => '48rem',
+            '4xl' => '56rem',
+            '5xl' => '64rem',
+            '6xl' => '72rem',
+            '7xl' => '80rem',
+            'full' => 'calc(100vw - 2rem)',
+            default => '28rem',
+        };
+    }
+
+    public function getFluxWidthStyle(): string
+    {
+        $maxWidth = $this->getFluxMaxWidth();
+
+        return "width: min({$maxWidth}, calc(100vw - 2rem)); max-width: calc(100vw - 2rem);";
     }
 }
